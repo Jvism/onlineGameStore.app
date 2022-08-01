@@ -1,0 +1,16 @@
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+  >
+    <g fill="none" fill-rule="evenodd">
+      <rect width="20" height="20" style="stroke: rgba(0, 0, 0, 0)"></rect>
+      <path
+        d="M2,22 C2,16.478 6.477,12 12,12 C17.522,12 22,16.478 22,22 M12,2 C14.761,2 17,4.239 17,7 C17,9.762 14.761,12 12,12 C9.238,12 7,9.762 7,7 C7,4.239 9.238,2 12,2 Z"
+        stroke="#808080"
+      ></path>
+    </g>
+  </svg>
+</template>
