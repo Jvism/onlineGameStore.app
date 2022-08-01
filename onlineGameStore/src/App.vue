@@ -70,7 +70,7 @@ import LoginIcon from "./components/icons/IconLogin.vue";
           </NavItem>
         </RouterLink>
 
-        <RouterLink to="/">
+        <RouterLink to="/games/new">
           <NavItem>
             <template #icon>
               <AddGameIcon />

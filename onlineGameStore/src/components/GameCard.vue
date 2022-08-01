@@ -4,41 +4,67 @@ import AddIcon from "././icons/IconAdd.vue";
 import FavoriteIcon from "././icons/IconFavorite.vue";
 import RemoveIcon from "././icons/IconRemove.vue";
 import EditIcon from "././icons/IconEdit.vue";
+import router from "../router";
 
 export default {
-  props: ["name", "price", "urlImage", "index"],
+  data() {
+    return {
+      disable: false,
+    };
+  },
+  props: ["id", "name", "price", "urlImage", "index"],
   components: { CardItem, AddIcon, FavoriteIcon, RemoveIcon, EditIcon },
+  methods: {
+    deleteGame() {
+      fetch(`http://localhost:3000/games/${this.id}`, { method: "DELETE" });
+      this.disable = true;
+    },
+    goToEdit() {
+      router.push({ path: `/games/${this.id}` });
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" :id="id" v-if="!disable">
     <img :src="urlImage" alt="" />
     <div class="details">
       <div class="container-price-buttons">
         <h3 class="price">$ {{ price }}</h3>
 
         <div class="buttons">
-          <CardItem>
-            <template #icon>
-              <AddIcon />
-            </template>
-          </CardItem>
-          <CardItem>
-            <template #icon>
-              <FavoriteIcon />
-            </template>
-          </CardItem>
-          <CardItem>
-            <template #icon>
-              <RemoveIcon />
-            </template>
-          </CardItem>
-          <CardItem>
-            <template #icon>
-              <EditIcon />
-            </template>
-          </CardItem>
+          <button>
+            <CardItem>
+              <template #icon>
+                <AddIcon />
+              </template>
+            </CardItem>
+          </button>
+
+          <button>
+            <CardItem>
+              <template #icon>
+                <FavoriteIcon />
+              </template>
+            </CardItem>
+          </button>
+
+          <button v-on:click="deleteGame">
+            <CardItem>
+              <template #icon>
+                <RemoveIcon />
+              </template>
+            </CardItem>
+          </button>
+
+          <button v-on:click="goToEdit">
+            <CardItem>
+              <template #icon>
+                <EditIcon />
+              </template>
+            </CardItem>
+          </button>
         </div>
       </div>
       <div class="container-name">
@@ -107,5 +133,11 @@ export default {
   height: 50px;
   display: flex;
   margin-top: 18px;
+}
+
+button {
+  padding: 0;
+  border: none;
+  height: fit-content;
 }
 </style>

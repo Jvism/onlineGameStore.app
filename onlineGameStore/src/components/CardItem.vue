@@ -13,6 +13,8 @@ i {
   place-content: center;
   width: 25px;
   height: 25px;
+  padding: 0;
+  border: none;
 
   color: var(--color-text);
 }
